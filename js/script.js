@@ -38,6 +38,7 @@ var octopus = {
     model.currentCat = model.cats[0];
     buttonView.init();
     catView.init();
+    adminView.init();
   },
   getCurrentCat: function() {
     return model.currentCat;
@@ -62,6 +63,7 @@ var catView = {
     this.elemOut = document.getElementById("out");
     this.elemImg.addEventListener("click", (function(catCopy) {
       return function() {
+        adminView.init();
         octopus.incCounter(catCopy);
         catView.render();
       }
@@ -89,6 +91,7 @@ var buttonView = {
       elemCats.appendChild(cur);
       cur.addEventListener("click", (function(catCopy) {
         return function() {
+          adminView.init();
           octopus.setCurrentCat(catCopy);
           catView.render();
         };
@@ -97,6 +100,52 @@ var buttonView = {
   }
 }
 
+/* ======= Admin View ======= */
+var adminView = {
+  init: function() {
+    this.elemBtn = document.getElementById("admin-btn");
+    this.elemForm = document.getElementById("admin-form");
+    this.elemBtnUpdate = document.getElementById("admin-btn-update");
+    this.elemBtnCancel = document.getElementById("admin-btn-cancel");
+
+    this.elemName = document.getElementById("input-cat-name");
+    this.elemCount = document.getElementById("input-cat-clicks");
+    this.elemURL = document.getElementById("input-cat-url");
+
+    this.elemForm.style.visibility = "hidden";
+    this.elemBtn.style.visibility = "visible";
+
+    this.elemBtn.addEventListener("click", function() {
+      var elemForm = document.getElementById("admin-form");
+      var elemBtn = document.getElementById("admin-btn");
+      elemBtn.style.visibility = "hidden";
+      elemForm.style.visibility = "visible";
+      adminView.preSetValues();
+    });
+
+    this.elemBtnUpdate.addEventListener("click", function() {
+      var curCat = octopus.getCurrentCat();
+      curCat.name = document.getElementById("input-cat-name").value;
+      curCat.clickCount = parseInt(document.getElementById("input-cat-clicks").value);
+      curCat.imgSrc = document.getElementById("input-cat-url").value;
+      adminView.init();
+      catView.render();
+    }, false);
+
+    this.elemBtnCancel.addEventListener("click", function() {
+      adminView.init();
+    }, false);
+
+  },
+  preSetValues: function() {
+    var curCat = octopus.getCurrentCat();
+    this.elemName.value = curCat.name;
+    this.elemCount.value = parseInt(curCat.clickCount);
+    this.elemURL.value = curCat.imgSrc;
+  },
+}
+
 octopus.init();
 })()
+
 

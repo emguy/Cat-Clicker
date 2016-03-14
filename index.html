@@ -10,9 +10,31 @@
     </ul>
     <p id="cat-name">
     </p>
-    <div id="current-cat">
-      <img id="cat-image" src="#" />
-      <p><span id="out">0</span> clicks</p>
+    <img id="cat-image" src="#" />
+    <p><span id="out">0</span> clicks</p>
+    <div id="admin">
+      <button id="admin-btn">admin</button>
+    </div>
+    <div id="admin-form">
+      <label>
+        Cat name:
+        <input class="admin-input" id="input-cat-name" type="text" value=""/>
+      </label>
+
+      <label>
+        Cat Clicks:
+        <input class="admin-input" id="input-cat-clicks" type="text" value=""/>
+      </label>
+
+      <label>
+        Image URL:
+        <input class="admin-input" id="input-cat-url" type="text" value=""/>
+      </label>
+
+      <button id="admin-btn-update"> Update </button>
+
+      <button id="admin-btn-cancel"> Cancel </button>
+
     </div>
     <script src="js/script.js"> </script>
   </body>
