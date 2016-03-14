@@ -1,42 +1,20 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+    <title>Cat Clicker</title>
+</head>
+<body>
+    <ul id="cat-list"></ul>
+    <div id="cat">
 
-  <body>
-    <ul id="cat-list">
-    </ul>
-    <p id="cat-name">
-    </p>
-    <img id="cat-image" src="#" />
-    <p><span id="out">0</span> clicks</p>
-    <div id="admin">
-      <button id="admin-btn">admin</button>
-    </div>
-    <div id="admin-form">
-      <label>
-        Cat name:
-        <input class="admin-input" id="input-cat-name" type="text" value=""/>
-      </label>
-
-      <label>
-        Cat Clicks:
-        <input class="admin-input" id="input-cat-clicks" type="text" value=""/>
-      </label>
-
-      <label>
-        Image URL:
-        <input class="admin-input" id="input-cat-url" type="text" value=""/>
-      </label>
-
-      <button id="admin-btn-update"> Update </button>
-
-      <button id="admin-btn-cancel"> Cancel </button>
+        <h2 data-bind="text: name"></h2>
+        <h3 data-bind="text: level"></h3>
+        <div data-bind="text: clickCount"></div>
+        <img src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src: imgSrc}">
 
     </div>
-    <script src="js/script.js"> </script>
-  </body>
-
+    <script src="js/lib/knockout-3.4.0.js"></script>
+    <script src="js/script.js"></script>
+</body>
 </html>
