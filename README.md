@@ -1,3 +1,3 @@
 # Cat-Clicker
 
-This is another udacity's JavaScript project
+This is a very simple project --- a playground for knowout.js.
